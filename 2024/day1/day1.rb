@@ -1,4 +1,6 @@
 
+INPUT_FILE = "details/input.txt"
+
 def part_2(left, right)
     total = 0
 
@@ -36,7 +38,7 @@ def append_lists(lines)
 end
 
 def main
-    lines = File.readlines('input.txt')
+    lines = File.readlines(INPUT_FILE)
 
     left, right = append_lists(lines)
     left  = left.sort
