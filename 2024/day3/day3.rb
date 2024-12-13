@@ -2,6 +2,7 @@
 INPUT_FILE = "details/input.txt"
 
 def part_2(content)
+
   amt_with_conditions = 0
   counting = true
 
@@ -10,8 +11,10 @@ def part_2(content)
   matches_with_conditions.each do |match|
     if match[0] == 'do()'
       counting = true
+
     elsif match[0] == "don't()"
       counting = false
+
     elsif counting && match[0].start_with?('mul')
       x, y = match[0].scan(/\d+/).map(&:to_i)
       amt_with_conditions += x * y
