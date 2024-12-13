@@ -1,4 +1,6 @@
 
+INPUT_FILE = "details/input.txt"
+
 def part1(numbers)
     increase = 0
     decrease = 0
@@ -57,7 +59,7 @@ def main
     part1_safe = 0
     part2_safe = 0
 
-    File.open("input.txt", "r") do |file|
+    File.open(INPUT_FILE, "r") do |file|
         file.each_line do |line|
             numbers = line.split.map(&:to_i)
 
