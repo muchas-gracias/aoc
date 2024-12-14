@@ -2,9 +2,11 @@ import sys
 sys.setrecursionlimit(8000)
 
 INPUT_FILE = "details/input.txt"
+
 SECONDS = 100
 WIDTH = 101
 HEIGHT = 103
+
 ROW_MID = ((HEIGHT - 1) // 2)
 INDEX_MID = ((WIDTH - 1) // 2)
 
