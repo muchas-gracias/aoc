@@ -1,5 +1,5 @@
 
-INPUT_FILE = "details/input.txt"
+INPUT_FILE = "details/day1.txt"
 
 def part_2(left, right)
     total = 0
