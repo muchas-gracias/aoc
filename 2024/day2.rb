@@ -1,5 +1,5 @@
 
-INPUT_FILE = "details/input.txt"
+INPUT_FILE = "details/day2.txt"
 
 def part1(numbers)
     increase = 0

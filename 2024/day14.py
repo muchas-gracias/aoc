@@ -1,7 +1,7 @@
 import sys
 sys.setrecursionlimit(8000)
 
-INPUT_FILE = "details/input.txt"
+INPUT_FILE = "details/day14.txt"
 
 SECONDS = 100
 WIDTH = 101

@@ -1,5 +1,5 @@
 
-INPUT_FILE = "details/input.txt"
+INPUT_FILE = "details/day3.txt"
 
 def part_2(content)
 
