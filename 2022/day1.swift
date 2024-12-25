@@ -11,13 +11,9 @@ func check_lst(lst: inout [Int], count: Int)
         {
             lst.insert(count, at: index)
             lst.popLast()
-      
             break
-            
         }
-
     }
-
 
     return
 }
