@@ -8,10 +8,12 @@ class Match:
         self.you = ['X', 'Y', 'Z']
         self.lst = lst
 
+        # -----------------------
         self.loss = 0
         self.draw = 3
         self.win = 6
 
+        #------------------------
         self.scissors = 2
         self.paper = 1
         self.rock = 0

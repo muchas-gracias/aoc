@@ -1,6 +1,6 @@
 import Foundation
 
-let INPUT_FILE: String = "details/day2.txt"
+let INPUT_FILE: String = "details/day2_samp.txt"
 
 class Match
 {
@@ -23,10 +23,13 @@ class Match
         self.guest = ["A", "B", "C"]
         self.you = ["X", "Y", "Z"]
         self.lst = lst
+
+        // --------------------
         self.loss = 0
         self.draw = 3
         self.win = 6
 
+         // -------------------
         self.scissors = 2
         self.paper = 1
         self.rock = 0
@@ -71,7 +74,7 @@ class Match
 
     func match() -> (Int, Int)
     {
-        var guestindex = 0
+        let guestindex = 0
         var youindex = 0
 
         for each in self.lst
@@ -136,7 +139,7 @@ class Match
 
             }
         }
-
+        print(self.total, self.total2)
         return (self.total, self.total2)
     }
 
