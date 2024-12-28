@@ -4,13 +4,13 @@ let INPUT_FILE: String = "details/day1.txt"
 
 func check_lst(lst: inout [Int], count: Int)
 {
-
+    
     for (index, element) in lst.enumerated()
     {
         if count > element
         {
             lst.insert(count, at: index)
-            lst.popLast()
+            lst.removeLast()
             break
         }
     }
@@ -39,7 +39,6 @@ func main()
             if let number = Int(trimmed) 
             {
                 count += number
-                print(count)
             }
         }
     } 

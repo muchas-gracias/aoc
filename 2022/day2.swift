@@ -1,6 +1,6 @@
 import Foundation
 
-let INPUT_FILE: String = "details/day2_samp.txt"
+let INPUT_FILE: String = "details/day2.txt"
 
 class Match
 {
@@ -72,75 +72,89 @@ class Match
         return total
     }
 
-    func match() -> (Int, Int)
+    func part2() -> (Int)
     {
-        let guestindex = 0
-        var youindex = 0
+        var guest = 0
+        var you = 0
 
         for each in self.lst
         {
-            if let guestindex = self.guest.firstIndex(of: each[0]),
-            let youindex = self.you.firstIndex(of: each[1])
+            if let guest_idx = self.guest.firstIndex(of: each[0]),
+            let you_idx = self.you.firstIndex(of: each[1])
             {
-                self.total += youindex + 1
-                self.total += self.totals(you: youindex, guest: guestindex)
-            }
 
-            if youindex == 1
+                guest = guest_idx
+                you = you_idx
+
+                if you == 0
+                {
+                    if guest == self.rock
+                    {
+                        you = self.scissors
+                    }
+                    if guest == self.paper
+                    {
+                        you = self.rock
+                    }
+                    if guest == self.scissors
+                    {
+                        you = self.paper
+                    }
+
+                    self.total2 += you + 1
+                    self.total2 += self.totals(you: you, guest: guest)
+                    continue
+                }
+
+                if you == 1
+                {
+                    you = guest
+                    self.total2 += you + 1
+                    self.total2 += self.totals(you: you, guest: guest)
+                    continue
+                }
+
+                if you == 2
+                {
+                    if guest == self.rock
+                    {
+                        you = self.paper
+                    }
+
+                    if guest == self.paper
+                    {
+                        you = self.scissors
+                    }
+
+                    if guest == self.scissors
+                    {
+                        you = self.rock
+                    }
+
+
+                    self.total2 += you + 1
+                    self.total2 += self.totals(you: you, guest: guest)
+                    continue
+                }
+            } 
+        }
+        return self.total2
+    }
+
+    func match() -> (Int)
+    {
+
+        for each in self.lst
+        {
+            if let guest_idx = self.guest.firstIndex(of: each[0]),
+            let you_idx = self.you.firstIndex(of: each[1])
             {
-                youindex = guestindex
-                self.total2 += youindex + 1
-                self.total2 += self.totals(you: youindex, guest: guestindex)
-                continue
-            }
-
-            if youindex == 0
-            {
-                if guestindex == self.rock
-                {
-                    youindex = self.scissors
-                }
-
-                if guestindex == self.paper
-                {
-                    youindex = self.rock
-                }
-
-                if guestindex == self.scissors
-                {
-                    youindex = self.paper
-                }
-
-                self.total2 += youindex + 1
-                self.total2 += self.totals(you: youindex, guest: guestindex)
-                continue
-            }
-
-            if youindex == 2
-            {
-                if guestindex == self.rock
-                {
-                    youindex = self.paper
-                }
-
-                if guestindex == self.paper
-                {
-                    youindex = self.scissors
-                }
-
-                if guestindex == self.scissors
-                {
-                    youindex = self.rock
-                }
-
-                self.total2 += youindex + 1
-                self.total2 += self.totals(you: youindex, guest: guestindex)
-                continue
-
+                self.total += you_idx + 1
+                self.total += self.totals(you: you_idx, guest: guest_idx)
             }
         }
-        print(self.total, self.total2)
-        return (self.total, self.total2)
+
+        return (self.total)
     }
 
 }
@@ -168,7 +182,8 @@ func main()
     }
 
     let matches = Match(lst: lst)
-    let (result1, result2) = matches.match()
+    let result1 = matches.match()
+    let result2 = matches.part2()
 
     print("Part 1  = \(result1)")
     print("Part 2 = \(result2)")
