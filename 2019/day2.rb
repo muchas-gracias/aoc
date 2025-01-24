@@ -1,18 +1,13 @@
 
 INPUT_FILE = "details/day2.txt"
 
-# 3749
-def main
+def analyze(index1, index2, lst)
     idx = 0
     current_position = 0
-    done = false
-    
-    file = File.open(INPUT_FILE, 'r')
-    lst =  file.each_line.first.split(',').map(&:to_i)
-    file.close
-  
-    lst[1] = 12
-    lst[2] = 2
+
+    lst[1] = index1
+    lst[2] = index2
+
     while current_position != 99
 
         if lst[idx] == 1
@@ -41,13 +36,44 @@ def main
 
 
         elsif lst[idx] == 99
-            done = true
             break
 
         end
         idx += 4
     end
-    puts lst[0]
+    val = lst[0]
+    return val
+end
+
+def main
+    target = 19690720
+    found = false
+    
+    file = File.open(INPUT_FILE, 'r')
+    lst =  file.each_line.first.split(',').map(&:to_i)
+    file.close
+    
+    idx1 = 12
+    idx2 = 1
+    result = analyze(idx1, idx2, lst.dup)
+    puts "Part 1 = #{result}"
+
+    max_len = lst.length
+    for i in 1..max_len - 1
+        for j in 1..max_len - 1
+            result = analyze(i, j, lst.dup) 
+            if result == target
+                result = 100 * i + j
+                puts "Part 2 = #{result}"
+                found = true
+                break
+            end
+        end
+        if found == true
+            break
+        end
+    end
+
 end
 
 
