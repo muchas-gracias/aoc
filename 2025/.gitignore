@@ -1,2 +1,9 @@
 details/
-*.py
+# *.py
+day1.py
+day2.py
+day3.py
+day4.py
+samp.py
+day6.py
+day4.swift
